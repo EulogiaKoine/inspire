@@ -4,7 +4,7 @@ if(!String.prototype.countSplitRight) Object.defineProperty(String.prototype, 'c
     value(n){
         if((n >>= 0) < 1) throw new RangeError("Invalid Count: "+n)
         const r = []
-        let i = this.length, j = i/n>>0
+        let i = this.length, j = Math.ceil(i/n)-1
         while(i > 0){
             r[j--] = this.slice(Math.max(0, i-n), i)
             i -= n
