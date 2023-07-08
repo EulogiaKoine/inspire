@@ -62,6 +62,8 @@ copy[0].test === arr[0].test // false
 ------------------------------
 ## String
 - [String.prototype.format()](#stringprototypeformat)
+- [String.prototype.countSplitLeft()](#stringprototypecountsplitleftn)
+- [String.prototype.countSplitRight()](#stringprototypecountsplitrightn)
 
 <br>
 
@@ -88,6 +90,28 @@ copy[0].test === arr[0].test // false
 let a = 1, b = 2
 "{0} + {1} = {2}".format(a, b, a+b)
 // "1 + 2 = 3"
+```
+
+<br>
+
+### String.prototype.countSplitLeft(n)
+&nbsp;문자열을 **왼쪽**에서부터 n개씩 자른 배열을 반환한다.
+
+##### example_
+```javascript
+"123456789".countSplitLeft(2)
+// ['12','34','56','78','9']
+```
+
+<br>
+
+### String.prototype.countSplitRight(n)
+&nbsp;문자열을 **오른쪽**에서부터 n개씩 자른 배열을 반환한다.
+
+##### example_
+```javascript
+"123456789".countSplitRight(2)
+// ['1','23','45','67','89']
 ```
 
 <br><br><br>
