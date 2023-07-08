@@ -27,7 +27,7 @@
  * @param {function} super 부모(상속하는) 클래스
  * @returns {void}
  */
-inherits(Super, Derived)
+inherits(Derived, Super)
 ```
 
 
