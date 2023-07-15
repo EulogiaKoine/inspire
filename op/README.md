@@ -2,7 +2,8 @@
 &nbsp;operator 패키지; 봇 작동, 또는 디버깅 등을 위한 패키지입니다.
 
 - [power](#power)
-- [DecodeFuncUnicode](#decodefuncunicode)
+- [DecodeFuncString](#decodefuncstring)
+- [evaluate](#evaluate)
 
 
 &nbsp;

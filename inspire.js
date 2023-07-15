@@ -1,4 +1,3 @@
-"use strict"
 module.exports = function(_global){
 
 if(!(typeof _global === 'object' && _global.toString() === "[object global]")){

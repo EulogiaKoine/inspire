@@ -1,4 +1,3 @@
-"use strict"
 module.exports = function($path, $r_inspire, $global){
 const $rp_constructor = $r_inspire('rp_constructor').rp_constructor
 const $nanoTime = java.lang.System.nanoTime
