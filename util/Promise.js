@@ -206,13 +206,7 @@ Promise.all = function(arr) {
         if (val && (typeof val === 'object' || typeof val === 'function')) {
           let then = val.then;
           if (typeof then === 'function') {
-            then.call(
-              val,
-              function(val) {
-                res(i, val);
-              },
-              reject
-            );
+            then.call(val, val => res(i, val), reject);
             return;
           }
         }
@@ -225,9 +219,7 @@ Promise.all = function(arr) {
       }
     }
 
-    for (let i = 0; i < args.length; i++) {
-      res(i, args[i]);
-    }
+    for (let i = 0; i < args.length; i++) res(i, args[i]);
   });
 };
 
