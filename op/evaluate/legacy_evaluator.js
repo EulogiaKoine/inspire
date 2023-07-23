@@ -6,6 +6,8 @@ const $config = $r_inspire('config')
 const $room = $config.room
 const $hash = $config.hash
 
+const { setTimeout, clearTimeout, setInterval, clearInterval, toast } = $r_inspire('native_binder')
+
 function legacy_evaluator(room, msg, sender, isGroupChat, replier, imageDB, packageName, isDebugRoom, isMention){
     if(isDebugRoom || msg.startsWith($config.prefix) && !(isGroupChat && $room.indexOf(room) === -1) && $hash.indexOf(imageDB.getProfileHash()) !== -1){
         let rp = $rp_constructor(replier)

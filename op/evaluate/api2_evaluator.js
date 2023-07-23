@@ -6,6 +6,8 @@ const $config = $r_inspire('config')
 const $room = $config.room
 const $hash = $config.hash
 
+const { setTimeout, clearTimeout, setInterval, clearInterval, toast } = $r_inspire('native_binder')
+
 function api2_evaluator(msg){
     if(msg.isDebugRoom || msg.content.startsWith($config.prefix) && $room.indexOf(msg.room) !== -1
      && $hash.indexOf(java.lang.String(msg.author.avatar.getBase64()).hashCode()) !== -1){

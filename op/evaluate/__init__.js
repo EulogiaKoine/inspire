@@ -82,7 +82,7 @@ if(ENV === 2){
     evaluate.off = function off(){
         const bot = BotManager.getCurrentBot()
         const listeners = bot.listeners(Event.MESSAGE)
-        if($running || listeners.includes(api22legacy) || listeners.includes(api2_evaluator)){
+        if(this.$running || listeners.includes(api22legacy) || listeners.includes(api2_evaluator)){
             this.$running = null
             bot.removeListener(Event.MESSAGE, api22legacy)
             bot.removeListener(Event.MESSAGE, api2_evaluator)
