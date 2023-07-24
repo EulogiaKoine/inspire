@@ -7,7 +7,7 @@
 module.exports = function(path, r_inspire, _global){
 return ['setTimeout', 'clearTimeout', 'setInterval', 'clearInterval', 'toast'].map(native => {
     if(native in _global){
-        if(/function \(\) \{\n\t\[native code, arity\=\d+\]\n\}/.test(_global[native].toString()))
+        if(/function .+\(\) \{\n\t\[native code, arity\=[1-9]+\]\n\}/.test(_global[native].toString()))
             return [native, _global[native].bind(_global)]
         else
             return [native, _global[native]]
