@@ -10,6 +10,7 @@ RhinoJS 및 메신저봇의 내장 클래스 기능을 확장(보완)한다.
 - [Date](#date)
 - [Math](#math)
 - [Array](#array)
+- [FileStream](#filestream)
 
 <br>
 <br>
@@ -376,4 +377,53 @@ counts.get(1) // 3
 counts.get(3) // 2
 counts.get(5) // 1
 counts.get('1') // 0
+```
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+---
+
+## FileStream
+&nbsp;간단한데 구현해서 쓰기 귀찮았던 것들
+
+- [exists()](#existspath)
+- [isDirectory()](#isdirectorypath)
+- [readObject()](#readobjectpath)
+- [writeObject()](#writeobjectpath-data)
+
+&nbsp;
+
+### exists(path)
+&nbsp;path 경로의 파일/폴더가 존재하는지 여부를 반환한다.
+```javascript
+FileStream.exists('/storage/emulated/0/test')
+```
+
+&nbsp;
+
+### isDirectory(path)
+&nbsp;path 경로에 일치하는 디렉토리의 존재 여부를 반환한다. false일 경우 파일이 존재하지 않을 수도 있다.
+```javascript
+FileStream.isDirectory(path)
+```
+
+&nbsp;
+
+### readObject(path)
+&nbsp;JSON 문자열로 구성된 파일을 객체로 읽어온다.
+```javascript
+/** @returns {!string} */
+FileStream.readObject('path')
+```
+
+&nbsp;
+
+### writeObject(path, data)
+&nbsp;data를 JSON 문자열로 변환해서 경로에 저장한다.
+```javascript
+FileStream.writeObject('path', {a:1})
 ```
