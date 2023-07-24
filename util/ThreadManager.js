@@ -109,6 +109,8 @@ const ThreadManager = Object.freeze({
         }
     },
 
+    exists(name){ return name in pool },
+
     list(){ return Object.keys(pool) },
 
     stopAll(){

@@ -165,6 +165,14 @@ BotManager.getCurrentBot().addListener(
 
 &nbsp;
 
+### exists(name)
+&nbsp;name 스레드가 존재하는지 확인한다.
+```javascript
+ThreadManager.exists('thread_name')
+```
+
+&nbsp;
+
 ### list()
 &nbsp;생성(create)된 스레드의 이름을 배열로 반환합니다.
 ```javascript
