@@ -5,6 +5,7 @@ return {
     Date: r_inspire('Date'),
     Math: r_inspire('Math'),
     Object: r_inspire('Object'),
-    String: r_inspire('String')
+    String: r_inspire('String'),
+    FileStream: r_inspire('FileStream')
 }
 }
