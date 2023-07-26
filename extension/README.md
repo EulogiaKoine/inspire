@@ -181,6 +181,7 @@ Date.fromFormat("2023. 06. 7", "y. MM. d").toString()
 - [Math.clamp()](#mathclampvalue-min-max)
 - [Math.lerp()](#mathlerpa-b-t)
 - [Math.randint()](#mathrandinta-b)
+- [package - combination](#combination)
 
 <br>
 
@@ -251,6 +252,40 @@ Math.lerp(100, 200, 0.13) // 113
 Math.randint(0, 10) // 10
 Math.randint(4) // 3
 ```
+
+&nbsp;
+
+&nbsp;
+
+### combination
+&nbsp;Math extension의 하위 패키지입니다. 조합론에 관련된 몇몇 함수를 다룹니다.
+
+&nbsp;Math.extension을 inspire하실 경우 기본적으로 함께 적용되므로, 메모리가 아까우시다면 귀찮음을 감수하고 쓸 것들만 inspire해주셔야 합니다...!
+
+&nbsp;
+
+#### Math.C(n, r)
+&nbsp;조합의 경우의 수 함수입니다. ***nCr***과 동일하며, n과 r은 정수만 허용됩니다.
+
+&nbsp;캐싱을 이용해 속도는 최초를 제외하면 O(1)입니다.
+
+#### Math.P(n, r)
+&nbsp;순열의 경우의 수 함수입니다. ***nPr***과 동일하며, n과 r은 정수만 허용됩니다.
+
+#### Math.fact(n)
+&nbsp;계승, 즉 ***n!*** 과 동일합니다. n은 정수만 허용됩니다.
+
+#### Math.gamma(x)
+&nbsp;감마 함수입니다. 자세한 설명은 [___여기___](https://ko.wikipedia.org/wiki/%EA%B0%90%EB%A7%88_%ED%95%A8%EC%88%98)를 참고해주세요.
+
+#### Math.Cf(n, r)
+&nbsp;n과 r로 **실수(Real Number)를 허용**하는 **조합 함수**입니다. 부동소수점 환경에 겹쳐 근사치를 구하기 때문에 소수점 10자리 이하에서 오차가 발생할 수 있습니다.
+
+#### Math.Pf(n, r)
+&nbsp;Cf와 같은 조건이 적용되는 **순열 함수**입니다.
+
+#### Math.factf(n)
+&nbsp;Cf와 같은 조건이 적용되는 **계승 함수**입니다.
 
 <br><br><br>
 
