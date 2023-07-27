@@ -260,7 +260,7 @@ Math.randint(4) // 3
 ### combination
 &nbsp;Math extension의 하위 패키지입니다. 조합론에 관련된 몇몇 함수를 다룹니다.
 
-&nbsp;Math.extension을 inspire하실 경우 기본적으로 함께 적용되므로, 메모리가 아까우시다면 귀찮음을 감수하고 쓸 것들만 inspire해주셔야 합니다...!
+&nbsp;extension.Math을 inspire하실 경우 기본적으로 함께 적용되므로, 메모리가 아까우시다면 귀찮음을 감수하고 쓸 것들만 inspire해주셔야 합니다...!
 
 &nbsp;
 

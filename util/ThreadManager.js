@@ -51,7 +51,7 @@ const ThreadManager = Object.freeze({
 
     isAlive(name){
         if(name in pool)
-            return pool[name].thread !== null
+            return pool[name].thread !== null && pool[name].thread.alive
         throw new Error("ThreadManager.isAlive - ThreadManager '"+name+"' doesn't exists")
     },
 
@@ -109,6 +109,14 @@ const ThreadManager = Object.freeze({
         }
     },
 
+    taskCount(name){
+        if(name in pool){
+            return pool[name].queue.size()
+        } else {
+            throw new Error("ThreadManager.taskCount - ThreadManager '"+name+"' doesn't exists")
+        }
+    },
+
     exists(name){ return name in pool },
 
     list(){ return Object.keys(pool) },
@@ -118,7 +126,9 @@ const ThreadManager = Object.freeze({
             if(this.isAlive(thread))
                 this.stop(thread)
         }
-    }
+    },
+
+    $pool: pool
 })
 
 if(!_global.ThreadManager) _global.ThreadManager = ThreadManager
