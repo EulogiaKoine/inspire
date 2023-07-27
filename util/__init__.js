@@ -1,6 +1,7 @@
 module.exports = function(path, r_inspire){
 return {
     Promise: r_inspire('Promise').Promise,
-    ThreadManager: r_inspire("ThreadManager")
+    ThreadManager: r_inspire("ThreadManager"),
+    File: r_inspire('File')
 }
 }
