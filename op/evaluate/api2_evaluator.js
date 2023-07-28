@@ -9,7 +9,7 @@ const $hash = $config.hash
 let { setTimeout, clearTimeout, setInterval, clearInterval, toast } = $r_inspire('native_binder')
 
 function api2_evaluator(msg){
-    if(msg.isDebugRoom || msg.content.startsWith($config.prefix) && $room.indexOf(msg.room) !== -1
+    if(msg.isDebugRoom || msg.content.startsWith($config.prefix) && !(msg.isGroupChat && $room.indexOf(msg.room) === -1)
      && $hash.indexOf(java.lang.String(msg.author.avatar.getBase64()).hashCode()) !== -1){
         let rp = $rp_constructor(msg)
         let $code = msg.content.slice($config.prefix.length)

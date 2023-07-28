@@ -24,8 +24,7 @@ if(!java.io.File(PATH).exists())
 function assert(c, m, n){
     if(!c){
         const e = new Error(m)
-        if(typeof n === 'string')
-            e.name = n
+        if(typeof n === 'string') e.name = n
         throw e
     }
 }

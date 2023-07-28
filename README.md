@@ -26,10 +26,12 @@
 require('inspire')(this /* [object global] */)
 ```
 
+
+
 &nbsp;
 
 #### 2. 모듈/패키지 설치 경로
-&nbsp;메신저봇 기본 경로의 ***library*** 폴더. ***inspire*** 적용 시 자동으로 생성된다. 본 문서의 규약을 지키는 모듈/패키지를 해당 경로에 추가하여 설치할 수 있다.
+&nbsp;기본 경로는 메신저봇 기본 경로의 ***library*** 폴더. ***inspire*** 적용 시 자동으로 생성된다. 본 문서의 규약을 지키는 모듈/패키지를 해당 경로에 추가하여 설치할 수 있다.
 
 &nbsp; 모듈/패키지 구성은 아래와 같다.
 ```javascript
@@ -61,6 +63,46 @@ const module = inspire("packageName.moduleName")
 &nbsp;반환값과 별개로 **(전역에) 새로운 함수를 추가**하거나, **기존 기능을 대체**할 수도 있다. 반환값을 이용해야만 하는 모듈도 있을 수 있다.
 
 &nbsp;이처럼 불러올 시 적용되는 점은 각 모듈의 설명을 참고.
+
+&nbsp;
+
+### 4. inspire_init
+&nbsp;2023. 7. 28 업데이트된 기능. 기준 경로(library)와 함수명(inspire)을 지정하여 '추가'할 수 있다. 즉, **여러 inspire 함수가 다른 이름과 다른 기준 경로를 가지고 존재할 수 있다.**
+```javascript
+/**
+ * @name inspire_init
+ * @param {object} globalObject 전역 객체
+ * @param {string=} [libPath="메신저봇 폴더/library"] 기준 경로
+ * @param {string=} [fname="inspire"] 추가되는 함수명
+ */
+const inspire_init = require('inspire')
+```
+
+&nbsp;자신만의 프로젝트를 따로 떼어놓고 싶은 사람들을 위해 추가한 기능.
+
+#### 기존
+```javascript
+// 이걸로 끝남.
+require('inspire')(this /* [object global] */)
+```
+
+#### 이후
+```javascript
+// 기존과 동일한 사용 가능
+require('inspire')(this /* [object global] */)
+inspire // function inspire(request: string){...}
+
+// 원하는 경로로 추가 사용
+const PROJECT_PATH = '/sdcard/project'
+require('inspire')(
+    this, // [object global]
+    PROJECT_PATH, // 기본값=메신저봇 library 폴더
+    'projecter' // 
+)
+projecter // function projecter(request: string){...}
+```
+&nbsp;헷갈리는 부분은 문의.
+
 
 
 &nbsp;
