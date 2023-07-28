@@ -1,4 +1,6 @@
-module.exports = function(_global){
+const PACKAGE_INDEX = '__init__.js'
+
+function inspire_init(_global, libPath, fnName){
 
 if(!(typeof _global === 'object' && _global.toString() === "[object global]")){
     let error = new Error("inspire - please check the argument")
@@ -6,13 +8,17 @@ if(!(typeof _global === 'object' && _global.toString() === "[object global]")){
     throw error
 }
 
-const PATH = com.xfl.msgbot.utils.SharedVar.Companion.getBotsPath().split('/').slice(0, -1).join('/') + "/library"
-const NAME = "inspire"
-const PACKAGE_INDEX = '__init__.js'
+const PATH = typeof libPath === 'string'?
+    libPath:
+    com.xfl.msgbot.utils.SharedVar.Companion.getBotsPath().split('/').slice(0, -1).join('/') + "/library"
+const NAME = typeof fnName === 'string'? fnName: "inspire"
 const cache = {}
 
+if(NAME in _global)
+    throw new Error("inspire_init - inspire function named '"+NAME+"' has been already initialized! please check the 3rd argument")
+
 if(!java.io.File(PATH).exists())
-    java.io.File(PATH).mkdir()
+    java.io.File(PATH).mkdirs()
 
 
 function assert(c, m, n){
@@ -64,8 +70,8 @@ function analyzeRequest(req){
 
 
 /**
- * @name pm_import
- * @param {string} req 패키지명.모듈명 형태의 import 요청
+ * @name inspire
+ * @param {string} req 패키지명.모듈명 형태의 inspire 요청
  * @ensure
  *     요청에 해당하는 패키지/모듈이 있을 경우 전역에 설치 및 캐싱
  */
@@ -140,6 +146,10 @@ function inspire(req){
     return pack
 }
 
+inspire.toString = () => `function `+NAME+`(request: string /* "pack.module" */) {\n\t[native code, arity=1]\n}`
 
 _global[NAME] = inspire
 }
+
+inspire_init.toString = () => `function inspire_init(object_global, libPath="msgbot/library", custom_name="inspire") {\n\t[native code, arity=3]\n}`
+module.exports = inspire_init
