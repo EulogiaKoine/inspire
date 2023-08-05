@@ -32,15 +32,11 @@ function File(path, isJson){
 File.SAVE_THREAD = SAVE_THREAD
 
 Object.defineProperty(File.prototype, 'path', {
-    get(){
-        return String(this._path)
-    }
+    get(){ return String(this._path) }
 })
 
 Object.defineProperty(File.prototype, 'toString', {
-    value(){
-        return 'File:'+this.path+''
-    }
+    value(){ return 'File:'+this.path+'' }
 })
 
 Object.defineProperty(File.prototype, 'read', {

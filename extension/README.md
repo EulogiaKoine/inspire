@@ -115,6 +115,21 @@ let a = 1, b = 2
 // ['1','23','45','67','89']
 ```
 
+<br>
+
+### String.prototype.similars(target)
+&nbsp;대상과의 유사도를 0~1사이의 값으로 반환한다. 한글일 경우 각 글자의 자모를 분해하여 판단한다.
+
+##### example_
+```javascript
+"코이네".similars("쾨네") // 0.5  <- 유사도 = 50%
+
+// 위 코드는 아래와 동일
+"ㅋㅗㅇㅣㄴㅔ".similars("ㅋㅚㄴㅔ")
+```
+
+[*참고: 사용 알고리즘*](https://en.wikipedia.org/wiki/Levenshtein_distance)
+
 <br><br><br>
 
 --------------------------
@@ -412,6 +427,17 @@ counts.get(1) // 3
 counts.get(3) // 2
 counts.get(5) // 1
 counts.get('1') // 0
+```
+
+&nbsp;
+
+### Array.prototype.repeat(n)
+&nbsp;현재 배열의 요소를 n번 반복한 배열을 반환한다. 요소는 얕은 복사로 처리된다.
+
+##### example_
+```javascript
+[1,2,3].repeat(3)
+// 결과: [1,2,3,1,2,3,1,2,3]
 ```
 
 &nbsp;
