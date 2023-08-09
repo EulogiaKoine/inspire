@@ -1,5 +1,5 @@
 "use strict"
-module.exports = (function(){
+module.exports = function($, $$, _global){
 
 /**
  * @author Koinē
@@ -67,6 +67,7 @@ else {
             const pack = sbn.getPackageName()
             const actions = sbn.getNotification().actions
             if(actions && pack.startsWith('com.kakao.t')){
+                this.sbn = sbn
                 this.packageName = pack
                 const e = sbn.getNotification().extras
                 this.sender = e.getString("android.title") || e.getParcelableArray("android.messages")[0].getString("sender")
@@ -86,7 +87,7 @@ else {
     Object.defineProperty(Chat.prototype, 'imageDB', {
         get(){
             return new ImageDB(this.sbn.getNotification().extras.getParcelableArray("android.messages")[0]
-            .get("sender_person").icon.bitmap, null)
+            .get("sender_person").getIcon().getBitmap(), null)
         }
     })
 
@@ -97,6 +98,12 @@ else {
         }
     })
 }
+
+Object.defineProperty(Chat, 'toString', {
+    value(){
+        return 'function Chat(StatusBarNotification){\n\t[inspired module, arity=1]\n}'
+    }
+})
 
 Object.defineProperty(Chat.prototype, 'isKakaoChat', {
     value: true
@@ -169,5 +176,6 @@ if(typeof Api === "object" && typeof Api.replyRoom === "function"){
 }
 
 
+if(!_global.Chat) _global.Chat = Chat
 return { Chat: Chat }
-})()
+}

@@ -15,12 +15,12 @@
 
 ---------------------------
 ## Chat
-&nbsp;알림을 해석하는 클래스입니다. ***안드로이드 버전 및 API 환경에 구애받지 않고 동일하게 작동***하도록 제작되었습니다.
+&nbsp;알림 정보(특히 카카오톡 채팅)를 해석하여 속성으로 접근할 수 있도록 하는 클래스입니다. ***안드로이드 버전 및 API 환경에 구애받지 않고 동일하게 작동***하도록 제작되었습니다.
 
 &nbsp;
 
 &nbsp;***Chat*** 객체는 기본적으로 아래의 속성을 지닙니다.
-```javascript
+```typescript
 packageName: string = 알림을 받은 패키지명
 isKakaoChat: boolean = 알림이 '카카오톡'의 '채팅'인지 여부
 ```
@@ -69,15 +69,18 @@ markAsRead(): boolean
 &nbsp;
 
 #### Legacy(API 1)
-&nbsp;***onNotificationPosted*** 리스너 함수의 1번째 인자로 들어오는 sbn을 인자로 넣어 Chat 객체를 생성합니다.
+&nbsp;***onNotificationPosted*** 리스너 함수의 1번째 인자로 들어오는 sbn을 인자로 넣어 Chat 객체를 생성합니다. 이때, 생성된 객체의 ***isKakaoChat*** 속성으로 응답을 제한시켜주는 게 좋습니다.
 
 ```javascript
 function onNotificationPosted(sbn, sm){
-    new Chat(sbn) // [object Chat]
+    const chat = new Chat(sbn)
+    if(chat.isKakaoChat){
+        // 실행될 코드
+    }
 }
 ```
 
-&nbsp;단, 레거시의 경우(만) 자바스크립트가 익숙하지 않은 분들을 위한 ***respond()*** 정적 메서드를 지원합니다. 대신 약간 느립니다(초보는 무시해도 될 정도).
+&nbsp;단, 레거시의 경우(만) 자바스크립트가 익숙하지 않은 분들을 위한 ***respond()*** 정적 메서드를 지원합니다. 대신 약간 느립니다(소규모 봇은 무시해도 될 정도).
 ```javascript
 function responseFix(room, msg, sender, isGroupChat, replier, imageDB, packageName, isMultiChat, isMention, userId){
     // 카톡 채팅이 올 시 작동하는 부분
@@ -97,7 +100,10 @@ function onNotificationPosted(sbn, sm){
 &nbsp;***Event.NOTIFICATION_POSTED*** 이벤트 리스너의 1번째 인자로 들어오는 sbn을 인자로 넣어 Chat 객체를 생성합니다.
 ```javascript
 bot.addListener(Event.NOTIFICATION_POSTED, function(sbn, sm){
-    new Chat(sbn) // [object Chat]
+    const chat = new Chat(sbn)
+    if(chat.isKakaoChat){
+        // 실행될 코드
+    }
 })
 ```
 
@@ -109,6 +115,6 @@ function onMessage(chat){
 
 bot.addListener(Event.NOTIFICATION_POSTED, function(sbn, sm){
     const chat = new Chat(sbn)
-    if(chat.isKakaoTalk) onMessage(chat)
+    if(chat.isKakaoChat) onMessage(chat)
 })
 ```
