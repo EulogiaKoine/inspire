@@ -65,6 +65,7 @@ copy[0].test === arr[0].test // false
 - [String.prototype.format()](#stringprototypeformat)
 - [String.prototype.countSplitLeft()](#stringprototypecountsplitleftn)
 - [String.prototype.countSplitRight()](#stringprototypecountsplitrightn)
+- [String.prototype.similars()](#stringprototypesimilarstarget)
 
 <br>
 
@@ -119,6 +120,8 @@ let a = 1, b = 2
 
 ### String.prototype.similars(target)
 &nbsp;대상과의 유사도를 0~1사이의 값으로 반환한다. 한글일 경우 각 글자의 자모를 분해하여 판단한다.
+
+&nbsp;시간복잡도가 더 긴 문자열의 길이 n에 대해 ***O(n²)*** 임을 유의하자.
 
 ##### example_
 ```javascript
