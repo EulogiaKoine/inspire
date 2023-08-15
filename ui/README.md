@@ -38,8 +38,8 @@ isGroupChat: boolean = 단체채팅 여부
 profileHash: number = 프로필 사진의 비트맵 해시코드
  >> 방에 상관없이 동일하지만, 봇이 작동되는 기기에 따라 다르다.
 
-userId: string = 보낸 사람의 고유한 사용자 ID
- >> 채팅방마다 다르지만, 봇이 작동되는 기기에 상관없이 동일하다
+roomId: string = 채팅이 온 방의 고유한 ID
+ >> 방마다 다르지만, 봇이 작동되는 기기에 상관없이 동일하다
 
 isMention: boolean = 멘션 여부
 
@@ -82,7 +82,7 @@ function onNotificationPosted(sbn, sm){
 
 &nbsp;단, 레거시의 경우(만) 자바스크립트가 익숙하지 않은 분들을 위한 ***respond()*** 정적 메서드를 지원합니다. 대신 약간 느립니다(소규모 봇은 무시해도 될 정도).
 ```javascript
-function responseFix(room, msg, sender, isGroupChat, replier, imageDB, packageName, isMultiChat, isMention, userId){
+function responseFix(room, msg, sender, isGroupChat, replier, imageDB, packageName, isMultiChat, isMention, roomId){
     // 카톡 채팅이 올 시 작동하는 부분
 
     // 인자는 Chat의 속성과 동일합니다.

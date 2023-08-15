@@ -3,7 +3,7 @@ module.exports = function($, $$, _global){
 
 /**
  * @author Koinē
- * @version 0.2 2023-08-09
+ * @version 0.4 2023-08-15
  * 
  * thanks to DarkTornado, archetic, DEViolet, Regret, 옾챝봇
  */ 
@@ -97,6 +97,14 @@ else {
             return (e.get("android.text") || e.getParcelableArray("android.messages")[0].get("text")) instanceof SpannableString
         }
     })
+
+    Object.defineProperty(Chat.prototype, 'userId', {
+        get(){
+            if(this.$userId) return this.$userId
+            return this.$userId = this.sbn.getNotification().extras.getParcelableArray('android.messages')[0]
+                .get('sender_person').getKey()
+        }
+    })
 }
 
 Object.defineProperty(Chat, 'toString', {
@@ -120,7 +128,7 @@ Object.defineProperty(Chat.prototype, 'profileHash', {
     }
 })
 
-Object.defineProperty(Chat.prototype, 'userId', {
+Object.defineProperty(Chat.prototype, 'roomId', {
     get(){ return this.sbn.getTag() }
 })
 
@@ -154,7 +162,7 @@ if(typeof Api === "object" && typeof Api.replyRoom === "function"){
                         chat.packageName,
                         chat.isMultiChat,
                         chat.isMention,
-                        chat.userId
+                        chat.roomId
                     )
                 }
             } else {
