@@ -1,6 +1,6 @@
 const PACKAGE_INDEX = '__init__.js'
 
-function inspire_init(_global, libPath, fnName){
+function _init_(_global, libPath, fnName){
 
 if(!(typeof _global === 'object' && _global.toString() === "[object global]")){
     let error = new Error("inspire - please check the argument")
@@ -150,5 +150,6 @@ inspire.toString = () => `function `+NAME+`(request: string /* "pack.module" */)
 _global[NAME] = inspire
 }
 
-inspire_init.toString = () => `function inspire_init(object_global, libPath="msgbot/library", custom_name="inspire") {\n\t[native code, arity=3]\n}`
-module.exports = inspire_init
+_init_.toString = () => `function inspire_init(object_global, libPath="msgbot/library", custom_name="inspire") {\n\t[native code, arity=3]\n}`
+module.exports = _init_
+delete _init_
