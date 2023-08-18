@@ -3,7 +3,7 @@ module.exports = function($, $$, _global){
 
 /**
  * @author Koinē
- * @version 0.4 2023-08-15
+ * @version 1.0 2023-08-18
  * 
  * thanks to DarkTornado, archetic, DEViolet, Regret, 옾챝봇
  */ 
