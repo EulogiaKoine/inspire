@@ -16,9 +16,10 @@ const SpannableString = android.text.SpannableString
 var Chat
 
 function bindSession(pack, room, acts){
-    const rai = acts[0].remoteInputs? 0: 1
-    Companion.setSession(pack, room, acts[rai])
-    Companion.setMarkAsRead(pack, room, acts[rai? 0: 1])
+    if(!Companion.hasSession(pack, room)){
+        Companion.setSession(pack, room, acts.find(v => v.getRemoteInputs()))
+        Companion.setMarkAsRead(pack, room, acts.find(v => !v.getRemoteInputs()))
+    }
 }
 
 // 안드로이드 버전 11 미만
@@ -36,7 +37,7 @@ if(android.os.Build.VERSION.SDK_INT < 30){
                 bindSession(pack,
                     this.room = this.room || this.sender,
                     actions)
-                this.msg = e.getString("android.text")
+                this.msg = e.get("android.text").toString()
                 return this
             }
             return {
@@ -72,13 +73,13 @@ else {
                 const e = sbn.getNotification().extras
                 this.sender = e.getString("android.title") || e.getParcelableArray("android.messages")[0].getString("sender")
                 bindSession(pack, this.room = e.getString("android.subText") || this.sender, actions)
-                this.msg = e.getString("android.text") || e.getParcelableArray("android.messages")[0].getString("text")
+                this.msg = (e.get("android.text") || e.getParcelableArray("android.messages")[0].get("text")).toString()
                 this.isGroupChat = e.getBoolean("android.isGroupConversation")
                 return this
             }
             return {
                 packageName: pack,
-                isKakaoTalk: false
+                isKakaoChat: false
             }
         }
         throw new TypeError("Chat - argument must be a StatusBarNotification")
