@@ -15,4 +15,5 @@ if(!String.prototype.count) Object.defineProperty(String.prototype, 'count', {
     writable: true,
     configurable: true
 })
+return {}
 })()
