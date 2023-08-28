@@ -66,6 +66,7 @@ copy[0].test === arr[0].test // false
 - [String.prototype.countSplitLeft()](#stringprototypecountsplitleftn)
 - [String.prototype.countSplitRight()](#stringprototypecountsplitrightn)
 - [String.prototype.similars()](#stringprototypesimilarstarget)
+- [String.prototype.count()](#stringprototypecountvalue)
 
 <br>
 
@@ -132,6 +133,11 @@ let a = 1, b = 2
 ```
 
 [*참고: 사용 알고리즘*](https://en.wikipedia.org/wiki/Levenshtein_distance)
+
+&nbsp;
+
+### String.prototype.count(value)
+&nbsp;문자열에 포함된 value와 **일치**하는 문자열 패턴의 개수를 반환한다.
 
 <br><br><br>
 
@@ -317,6 +323,7 @@ Math.randint(4) // 3
 - [Array.prototype.toShaken()](#arrayprototypetoshakenstart-end)
 - [Array.prototype.count()](#arrayprototypecountvalue)
 - [Array.prototype.counts()](#arrayprototypecountsvalues)
+- [Array.prototype.repeat()](#arrayprototyperepeatn)
 
 
 <br><br>
