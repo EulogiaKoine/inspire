@@ -3,7 +3,7 @@
 
 &nbsp;***inspire - util.ThreadManager*** 패키지를 필요로 합니다.
 
-- [send](#send)
+- [<font color="red"><i>@deprecated</i></font> send](#send)
 - [event_loop](#event_loop)
 
 
@@ -15,7 +15,12 @@
 ## send
 &nbsp;메시지 전송을 비동기로 빼버린다.
 
+#### ***2024-02-15 update***
+&nbsp;메시지 전송 기능 관리의 책임이 ui.SessionManager로 넘어가며 최적화도 그쪽에서 optimize() 메서드로 수행합니다. 원리는 동일하지만 그쪽이 훨씬 효율적입니다.
+
 &nbsp;
+
+
 
 ### intro_
 
